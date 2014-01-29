@@ -1,10 +1,6 @@
 require 'digest/md5'
 module CloudinaryHelper
-  if Rails.application.config.assets.enabled
-    include Sprockets::Helpers::RailsHelper
-  else
-    include ActionView::Helpers::AssetTagHelper
-  end
+  include Sprockets::Helpers::RailsHelper
   alias :original_image_tag :image_tag
   alias :original_image_path :image_path
       
@@ -240,7 +236,8 @@ module CloudinaryHelper
       callback_url << callback_path
     end
     callback_url
-  end  
+  end
+
 end
 
 module Cloudinary::FormBuilder
