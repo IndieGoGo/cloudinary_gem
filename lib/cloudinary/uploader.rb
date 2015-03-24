@@ -131,14 +131,15 @@ class Cloudinary::Uploader
   end
 
   def self.destroy(public_id, options={})
-    call_api("destroy", options) do    
-      {
-        :timestamp=>(options[:timestamp] || Time.now.to_i),
-        :type=>options[:type],
-        :public_id=> public_id,
-        :invalidate=>options[:invalidate],
-      }
-    end              
+    IggLogger.log("info", "Cloudinary::Uploader.destroy public_id = #{public_id} stacktrace: #{caller}")
+    # call_api("destroy", options) do
+    #   {
+    #     :timestamp=>(options[:timestamp] || Time.now.to_i),
+    #     :type=>options[:type],
+    #     :public_id=> public_id,
+    #     :invalidate=>options[:invalidate],
+    #   }
+    #end              
   end
 
   def self.rename(from_public_id, to_public_id, options={})
